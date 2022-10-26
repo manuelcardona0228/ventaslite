@@ -39,33 +39,25 @@
                                 </td>
                                 <td class="text-center">
                                     <span>
-                                        <img src="{{ asset('storage/categories/' . $category->imagen) }}"
+                                        <img src="{{ asset('storage/categories/' . $category->image) }}"
                                             alt="imagen de ejemplo" height="70" width="80" class="rounded">
                                     </span>
                                 </td>
 
                                 <td class="text-center">
-                                    <a href="javascript:void(0)" wire:click="Edit({{$category->id}})"
+                                    <a href="javascript:void(0)" wire:click="edit({{$category->id}})"
                                         class="btn btn-dark mtmobile" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     {{-- @can('Category_Update')
                                     @endcan --}}
 
-                                    <a
-                                        href="javascript:void(0)" onclick="Confirm('{{$category->id}}')"
+                                    <a href="javascript:void(0)" onclick="Confirm('{{$category->id}}')"
                                         class="btn btn-dark" title="Delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
-                                    {{-- @if($category->products->count() < 1 )
-                                        @can('Category_Destroy')
-
-                                        @endcan
-                                    @endif --}}
-
-
-
-                                </td>
+                                    {{-- @if($category->products->count() < 1 ) @can('Category_Destroy') @endcan @endif
+                                        --}} </td>
                             </tr>
                             @endforeach
                         </tbody>
