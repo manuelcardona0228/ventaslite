@@ -15,6 +15,7 @@ class CategoriesController extends Component
     use WithFileUploads;
 
     public $name, $search, $image, $selected_id = 0, $pageTitle, $componentName;
+    protected $listeners = ['deleteRow' => 'destroy'];
     private $pagination = 5;
 
     public function mount()
@@ -86,6 +87,17 @@ class CategoriesController extends Component
 
         $this->resetUI();
         $this->emit('category-updated', 'Categoria Actualizada');
+    }
+
+    public function destroy(Category $category)
+    {
+        $image_name = $category->image;
+        $category->delete();
+
+        $image_name && unlink('storage/categories/' . $image_name);
+
+        $this->resetUI();
+        $this->emit('category-deleted', 'Categoria Eliminada');
     }
 
     public function resetUI()

@@ -51,13 +51,14 @@
                                     </a>
                                     {{-- @can('Category_Update')
                                     @endcan --}}
-
-                                    <a href="javascript:void(0)" onclick="Confirm('{{$category->id}}')"
-                                        class="btn btn-dark" title="Delete">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                    {{-- @if($category->products->count() < 1 ) @can('Category_Destroy') @endcan @endif
-                                        --}} </td>
+                                    @if($category->products->count() < 1 )
+                                        <a href="javascript:void(0)" onclick="confirm('{{$category->id}}')"
+                                            class="btn btn-dark" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    {{-- @can('Category_Destroy') @endcan --}}
+                                    @endif
+                                        </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -98,9 +99,8 @@
 
 
 
-	function Confirm(id)
+	function confirm(id)
 	{
-
 		swal({
 			title: 'CONFIRMAR',
 			text: '¿CONFIRMAS ELIMINAR EL REGISTRO?',
@@ -115,7 +115,6 @@
 				window.livewire.emit('deleteRow', id)
 				swal.close()
 			}
-
 		})
 	}
 
