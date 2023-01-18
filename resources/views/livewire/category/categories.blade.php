@@ -39,7 +39,7 @@
                                 </td>
                                 <td class="text-center">
                                     <span>
-                                        <img src="{{ asset('storage/categories/' . $category->image) }}"
+                                        <img src="{{ asset($category->image) }}"
                                             alt="imagen de ejemplo" height="70" width="80" class="rounded">
                                     </span>
                                 </td>
@@ -58,7 +58,7 @@
                                         </a>
                                     {{-- @can('Category_Destroy') @endcan --}}
                                     @endif
-                                        </td>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
